@@ -37,13 +37,12 @@ int main(int argc, char** argv)
     Py_Initialize();
     Py_SetProgramName(argv[0]);
     PySys_SetArgvEx(argc, argv, 0);
-    
+
     const std::string exe_path = get_exe_path();
     std::string py_path  = replace_suffix(exe_path, ".exe", ".pyc");
     if( access(py_path.c_str(), R_OK ) != 0 ) {
          py_path  = replace_suffix(exe_path, ".exe", ".py");
     }
-    std::cerr << PNAME << ": trying to start " << py_path << "\n";
     PyObject* PyFileObject = PyFile_FromString(const_cast<char*>(py_path.c_str()), "r");
     if( !PyFile_FromString ) 
     {

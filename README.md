@@ -16,7 +16,7 @@ Which in some cases evaluates to 3 processes:
 * env
 * final python
 
-This script allows you directly execute python.
+This script allows you directly execute python runtime.
 
 Usage:
 
@@ -25,6 +25,9 @@ Usage:
     foo.py             # the script
     $ cp win-py-spawner.exe foo.exe
     $ ./foo.exe          # loads python runtime and executes foo.py directly withing sheband/usr/bin env etc.
+
+If you suspect that exe is an compiled win-py-spawner, you can use only-and-only one option "--win-py-spawner-help" that shows this
+readme file contents.
 
 ## Why
 

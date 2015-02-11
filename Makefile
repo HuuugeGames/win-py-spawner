@@ -7,10 +7,15 @@
 
 # cygwin / unix
 CXXFLAGS= -I/usr/include/python2.7
-LDLIBS=-lpython2.7
+LDLIBS= -lpython2.7
 
-win-py-spawner.exe: win-py-spawner.o
-	$(CXX) $< -o $@ $(LDFLAGS) $(LDLIBS)
+win-py-spawner.exe: win-py-spawner.o readme.o
+	$(CXX) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+
+readme.c: README.md
+	echo "const char* readme = " > $@
+	sed -e 's/"/\\"/g' -e 's/$$/\\n"/' -e 's/^/"/' $< >> $@
+	echo ";" >> $@
 
 clean:
 	rm -rf win-py-spawner.exe win-py-spawner.o
